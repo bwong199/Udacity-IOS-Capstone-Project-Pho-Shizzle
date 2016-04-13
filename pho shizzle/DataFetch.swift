@@ -61,7 +61,7 @@ class DataFetch {
                                     newPho.address = phoAddress
                                     
                                     GlobalVariables.phoInfoList.append(newPho)
-                                    GlobalVariables.phoInfoList.sort({ $0.rating > $1.rating })
+                                    
                                     DataFetch().fetchGoogleData(phoName, address: phoAddress ){(success, error, results) in
                                         if success {
                                             
@@ -70,7 +70,7 @@ class DataFetch {
                                         }
                                         
                                     }
-
+                                    
                                     
                                     
                                     let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0] as? ViewController
@@ -103,40 +103,43 @@ class DataFetch {
     }
     
     func fetchGoogleData(phoPlace: String, address: String, completionHandler:(success: Bool, error: String?, results: [Pho]) -> Void){
-        print(phoPlace)
-        
+//        print(phoPlace)
+//        
         let urlParamter = phoPlace.stringByReplacingOccurrencesOfString(" ", withString: "%20")
         
         if let phoPlace = phoPlace as? String {
             let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.03%2C-114.14&radius=10000&type=restaurant&keyword=\(urlParamter)&key=AIzaSyAtq_jKJ6O-pM-wwvwpCx1n31yjwcI2cPI")!
             
+            //            print(url)
+            
             let task = NSURLSession.sharedSession().dataTaskWithURL(url){(data, response, error) -> Void in
                 if let data = data {
-                    //                print(urlContent)
                     
                     do {
                         let jsonResult =  try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                         
                         if jsonResult.count > 0 {
                             
+                            print(jsonResult)
+                            
                             if let items = jsonResult["results"] as? NSArray {
-                                
+                             
                                 
                                 if  let items = items as? NSArray {
                                     for item in items {
                                         
                                         if let name = item["name"] as? String, let rating = item["rating"] as? Double, let phoAddress = item["vicinity"] as? String {
                                             
-                                            //                                                    print("Google Rating \(name) \(rating)")
+                                            print("Google Rating \(name) \(rating)")
                                             
                                             for x in GlobalVariables.phoInfoList {
                                                 
-//                                                print(x.address)
-//                                                print(phoAddress)
+                                                //                                                print(x.address)
+                                                //                                                print(phoAddress)
                                                 
                                                 if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(4)) == name.lowercaseString.substringToIndex(name.startIndex.advancedBy(4))
                                                     
-                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(4)) == phoAddress.lowercaseString.substringToIndex(phoAddress.startIndex.advancedBy(4))
+//                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(4)) == phoAddress.lowercaseString.substringToIndex(phoAddress.startIndex.advancedBy(4))
                                                 {
                                                     x.gRating = rating
                                                 }

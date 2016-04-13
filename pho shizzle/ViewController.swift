@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     var selectedItem: Pho? = nil
     
@@ -16,10 +18,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var businesses: [Business]!
     
+    @IBOutlet var adderssLabel: UILabel!
+    
     @IBOutlet var tableView: UITableView!
+    
+    var manager:CLLocationManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Get own location
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -35,61 +49,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         
                         for business in businesses {
                             
-                            
-                            
                             for x in GlobalVariables.phoInfoList {
                                 
-                                print(x.name)
-                                print(business.name)
-                                print(x.address)
-                                print(business.address!)
+                                //                                print(x.name)
+                                //                                print(business.name)
+                                //                                print(x.address)
+                                //                                print(business.address!)
                                 
-                                                                if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
-//                                
-//                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
-                                                                {
-                                                                    print("\(business.name!) \(business.address!) \(business.rating!)")
-                                                                    x.yRating = Double(business.rating!)
-                                                                }
-                            }
-                            
-                        }
-                    })
-                    
-                    
-                    self.tableView.reloadData()
-                }
-                
-            } else {
-                
-            }
-        }
-        
-        
-        DataFetch().fetchZomatoData(21){(success, error, results) in
-            if success {
-                for x in GlobalVariables.phoInfoList {
-                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
-                    
-                    
-                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
-                        self.businesses = businesses
-                        
-                        for business in businesses {
-                            
-                            
-                            
-                            for x in GlobalVariables.phoInfoList {
-                                
-                                //                                                print(x.address)
-                                //                                                print(phoAddress)
-                                
-                                if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(4)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(4))
-                                    
-//                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
+                                if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
+                                    //
+                                    //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
                                 {
-                                    print("\(business.name!) \(business.address!) \(business.rating!)")
+                                    //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
                                     x.yRating = Double(business.rating!)
+                                    
                                 }
                             }
                             
@@ -104,24 +77,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
             }
         }
+  
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //        print(locations)
         
+        let userLocation:CLLocation = locations[0]
         
-        
-        //        Business.searchWithTerm("Vietnamese", completion: { (businesses: [Business]!, error: NSError!) -> Void in
-        //            self.businesses = businesses
-        //
-        //            for business in businesses {
-        //
-        //                print("\(business.name!) \(business.address!) \(business.rating!)")
-        //
-        //            }
-        //        })
-        
-        
-        
-        
-        
-        
+        CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler:  { (placemarks, error) -> Void in
+            if(error != nil){
+                print(error)
+            } else {
+                if placemarks!.count > 0{
+                    
+                    let p = (placemarks![0])
+                    
+                    print(p)
+                    
+                    var subThoroughfare:String
+                    
+                    if(p.subThoroughfare != nil){
+                        subThoroughfare = p.subThoroughfare!
+                    }
+                    
+                    
+                    p.country
+                    self.adderssLabel.text = "\(p.subThoroughfare!) \(p.thoroughfare!) \n \(p.locality!) \(p.country!) \n \(p.postalCode!)) "
+                }
+            }
+        })
         
     }
     
