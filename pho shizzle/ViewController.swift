@@ -21,28 +21,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
         //
-        DataFetch().fetchZomatoData(){(success, error, results) in
+        DataFetch().fetchZomatoData(0){(success, error, results) in
             if success {
-//                DataFetch().fetchGoogleData(){(success, error, results) in
-//                    if success {
-                        for x in GlobalVariables.phoInfoList {
-                            print("\(x.name) \(x.rating) \(x.gRating)")
-                            self.tableView.reloadData()
-                        }
-//                    } else {
-//                        
-//                    }
-//                
-//                }
+                for x in GlobalVariables.phoInfoList {
+                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
+
+                    self.tableView.reloadData()
+                }
+                
             } else {
                 
             }
-            
         }
         
         
-        
+        DataFetch().fetchZomatoData(21){(success, error, results) in
+            if success {
+                for x in GlobalVariables.phoInfoList {
+                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
+
+                    self.tableView.reloadData()
+                }
+                
+            } else {
+                
+            }
+        }
         
         
         
