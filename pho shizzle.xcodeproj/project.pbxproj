@@ -15,6 +15,7 @@
 		C51B5ABF1CBC981200C6F68E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51B5ABD1CBC981200C6F68E /* LaunchScreen.storyboard */; };
 		C51B5AC71CBCA38100C6F68E /* Pho.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B5AC61CBCA38100C6F68E /* Pho.swift */; };
 		C51B5AC91CBCA89F00C6F68E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */; };
+		C54134251CBDDCAF0051B800 /* DataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54134241CBDDCAF0051B800 /* DataFetch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C51B5AC01CBC981200C6F68E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C51B5AC61CBCA38100C6F68E /* Pho.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pho.swift; sourceTree = "<group>"; };
 		C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		C54134241CBDDCAF0051B800 /* DataFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,14 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				C51B5AB11CBC981200C6F68E /* AppDelegate.swift */,
+				C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */,
 				C51B5AC61CBCA38100C6F68E /* Pho.swift */,
 				C51B5AB31CBC981200C6F68E /* ViewController.swift */,
+				C54134241CBDDCAF0051B800 /* DataFetch.swift */,
 				C51B5AB51CBC981200C6F68E /* Main.storyboard */,
 				C51B5ABB1CBC981200C6F68E /* Assets.xcassets */,
 				C51B5ABD1CBC981200C6F68E /* LaunchScreen.storyboard */,
 				C51B5AC01CBC981200C6F68E /* Info.plist */,
 				C51B5AB81CBC981200C6F68E /* pho_shizzle.xcdatamodeld */,
-				C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */,
 			);
 			path = "pho shizzle";
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				C51B5AB41CBC981200C6F68E /* ViewController.swift in Sources */,
 				C51B5AB21CBC981200C6F68E /* AppDelegate.swift in Sources */,
+				C54134251CBDDCAF0051B800 /* DataFetch.swift in Sources */,
 				C51B5ABA1CBC981200C6F68E /* pho_shizzle.xcdatamodeld in Sources */,
 				C51B5AC71CBCA38100C6F68E /* Pho.swift in Sources */,
 				C51B5AC91CBCA89F00C6F68E /* GlobalVariables.swift in Sources */,
@@ -301,6 +305,7 @@
 				C51B5AC51CBC981200C6F68E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
