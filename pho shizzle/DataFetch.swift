@@ -12,6 +12,7 @@ import UIKit
 
 
 class DataFetch {
+    var businesses: [Business]!
     
     func fetchZomatoData (page: Int, completionHandler:(success: Bool, error: String?, results: [Pho]) -> Void){
         let url = NSURL(string: "https://developers.zomato.com/api/v2.1/search?q=vietnamese&lat=51.03&lon=-114.14&apikey=32cca5c64d799522c794ef24c5ebd21c&radius=10000&cuisines=vietnamese&start=\(page)")! ;
@@ -69,6 +70,7 @@ class DataFetch {
                                         }
                                         
                                     }
+
                                     
                                     
                                     let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0] as? ViewController
@@ -129,8 +131,8 @@ class DataFetch {
                                             
                                             for x in GlobalVariables.phoInfoList {
                                                 
-                                                print(x.address)
-                                                print(phoAddress)
+//                                                print(x.address)
+//                                                print(phoAddress)
                                                 
                                                 if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(4)) == name.lowercaseString.substringToIndex(name.startIndex.advancedBy(4))
                                                     

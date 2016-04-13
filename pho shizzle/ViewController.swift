@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var list : [Pho] = []
     
+    var businesses: [Business]!
+    
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if success {
                 for x in GlobalVariables.phoInfoList {
                     //                            print("\(x.name) \(x.rating) \(x.gRating)")
-
+                    
+                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+                        self.businesses = businesses
+                        
+                        for business in businesses {
+                            
+                            
+                            
+                            for x in GlobalVariables.phoInfoList {
+                                
+                                print(x.name)
+                                print(business.name)
+                                print(x.address)
+                                print(business.address!)
+                                
+                                                                if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
+//                                
+//                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
+                                                                {
+                                                                    print("\(business.name!) \(business.address!) \(business.rating!)")
+                                                                    x.yRating = Double(business.rating!)
+                                                                }
+                            }
+                            
+                        }
+                    })
+                    
+                    
                     self.tableView.reloadData()
                 }
                 
@@ -41,7 +70,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if success {
                 for x in GlobalVariables.phoInfoList {
                     //                            print("\(x.name) \(x.rating) \(x.gRating)")
-
+                    
+                    
+                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+                        self.businesses = businesses
+                        
+                        for business in businesses {
+                            
+                            
+                            
+                            for x in GlobalVariables.phoInfoList {
+                                
+                                //                                                print(x.address)
+                                //                                                print(phoAddress)
+                                
+                                if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(4)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(4))
+                                    
+//                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
+                                {
+                                    print("\(business.name!) \(business.address!) \(business.rating!)")
+                                    x.yRating = Double(business.rating!)
+                                }
+                            }
+                            
+                        }
+                    })
+                    
+                    
                     self.tableView.reloadData()
                 }
                 
@@ -52,7 +107,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         
-        
+        //        Business.searchWithTerm("Vietnamese", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        //            self.businesses = businesses
+        //
+        //            for business in businesses {
+        //
+        //                print("\(business.name!) \(business.address!) \(business.rating!)")
+        //
+        //            }
+        //        })
         
         
         
@@ -73,7 +136,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //                        cell.textLabel!.text = "Nike kicks"
         let pho = GlobalVariables.phoInfoList[indexPath.row]
         cell.textLabel!.text = "\(pho.name)  "
-        cell.detailTextLabel!.text = "Urbanspoon: \(pho.rating) G: \(pho.gRating)"
+        cell.detailTextLabel!.text = "Zomato: \(pho.rating)    Google: \(pho.gRating)    Yelp: \(pho.yRating)"
         
         //
         //        cell.imageView!.image = UIImage(named: "darthvader@2x-iphone.png")

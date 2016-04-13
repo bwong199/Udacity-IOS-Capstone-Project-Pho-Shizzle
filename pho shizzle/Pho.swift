@@ -17,6 +17,7 @@ class Pho {
     var votes = ""
     var distanceFromUser = 0
     var gRating = 0.00
+    var yRating = 0.00
     
     init(){
         
