@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class DataFetch {
     var businesses: [Business]!
     
     func fetchZomatoData (latitude: Double, longitude: Double, page: Int, completionHandler:(success: Bool, error: String?, results: [Pho]) -> Void){
+        
         let url = NSURL(string: "https://developers.zomato.com/api/v2.1/search?q=vietnamese&lat=\(latitude)&lon=\(longitude)&apikey=32cca5c64d799522c794ef24c5ebd21c&radius=10000&cuisines=vietnamese&start=\(page)")! ;
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url){(data, response, error) -> Void in
@@ -36,7 +38,7 @@ class DataFetch {
                                     
                                     
                                     //                                    let userLocation:CLLocation = CLLocation(latitude: 11.11, longitude: 22.22)
-                                    //                                    let priceLocation:CLLocation = CLLocation(latitude: 33.33, longitude: 44.44)
+                                    //                                    let phoLocation:CLLocation = CLLocation(latitude: 33.33, longitude: 44.44)
                                     //                                    let meters:CLLocationDistance = userLocation.distanceFromLocation(priceLocation)
                                     
                                     
@@ -56,7 +58,22 @@ class DataFetch {
                                     
                                     let phoAddress = restaurant["location"]!["address"]!! as! String
                                     newPho.address = phoAddress
-                                    print(newPho)
+                                    
+                                    // Distance Calculation
+                                    var phoLatitude = restaurant["location"]!["latitude"]!! as! String
+                                    var phoLongitude = restaurant["location"]!["longitude"]!! as! String
+                                    
+                                    let phoLatitudeD = Double(phoLatitude)
+                                    let phoLongitudeD = Double(phoLongitude)
+                                    
+                                    let userLocation:CLLocation = CLLocation(latitude: GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude)
+                                    let phoLocation:CLLocation = CLLocation(latitude: phoLatitudeD!, longitude: phoLongitudeD!)
+                                    
+                                    let phoDistance:CLLocationDistance = userLocation.distanceFromLocation(phoLocation)
+                                    
+                                    newPho.distanceFromUser = phoDistance / 1000
+                                    
+                                    print("Pho Distance \(phoDistance)")
                                     GlobalVariables.phoInfoList.append(newPho)
                                     
                                     GlobalVariables.phoInfoList.sortInPlace()
@@ -88,7 +105,7 @@ class DataFetch {
                     
                     completionHandler(success: true, error: nil, results: [])
                     
-                                        print(jsonResult)
+                    print(jsonResult)
                     
                 } catch {
                     print("JSON Serialization failed")
@@ -119,7 +136,7 @@ class DataFetch {
                         
                         if jsonResult.count > 0 {
                             
-                            print(jsonResult)
+                            //                            print(jsonResult)
                             
                             if let items = jsonResult["results"] as? NSArray {
                                 
@@ -129,7 +146,7 @@ class DataFetch {
                                         
                                         if let name = item["name"] as? String, let rating = item["rating"] as? Double, let phoAddress = item["vicinity"] as? String {
                                             
-                                            print("Google Rating \(name) \(rating)")
+                                            //                                            print("Google Rating \(name) \(rating)")
                                             
                                             for x in GlobalVariables.phoInfoList {
                                                 

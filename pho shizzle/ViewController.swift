@@ -82,6 +82,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         })
         
+        manager.stopUpdatingLocation()
+        manager.startMonitoringSignificantLocationChanges()
+        
         DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 0){(success, error, results) in
             if success {
                 for x in GlobalVariables.phoInfoList {
@@ -125,9 +128,52 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         
+
         
-        manager.stopUpdatingLocation()
-        manager.startMonitoringSignificantLocationChanges()
+//        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 21){(success, error, results) in
+//            if success {
+//                for x in GlobalVariables.phoInfoList {
+//                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
+//                    
+//                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+//                        self.businesses = businesses
+//                        
+//                        
+//                        if let businesses = businesses as? [Business] {
+//                            for business in businesses {
+//                                
+//                                for x in GlobalVariables.phoInfoList {
+//                                    
+//                                    //                                print(x.name)
+//                                    //                                print(business.name)
+//                                    //                                print(x.address)
+//                                    //                                print(business.address!)
+//                                    
+//                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
+//                                        //
+//                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
+//                                    {
+//                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
+//                                        x.yRating = Double(business.rating!)
+//                                        
+//                                    }
+//                                }
+//                                
+//                            }
+//                        }
+//                        
+//                    })
+//                    
+//                    
+//                    self.tableView.reloadData()
+//                }
+//                
+//            } else {
+//                
+//            }
+//        }
+//        
+
         
         
         
@@ -145,9 +191,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //        cell.textLabel!.text = product.title
         //                        cell.textLabel!.text = "Nike kicks"
         let pho = GlobalVariables.phoInfoList[indexPath.row]
-        cell.textLabel!.text = "\(pho.name)  "
+        cell.textLabel!.text = "\(pho.name) - \(String(format: "%.1f", pho.distanceFromUser)) km"
         cell.detailTextLabel!.text = "Zomato: \(pho.rating)    Google: \(pho.gRating)    Yelp: \(pho.yRating)"
-        
+    
         //
         //        cell.imageView!.image = UIImage(named: "darthvader@2x-iphone.png")
         //        cell.imageView!.image = UIImage(data: meme.image!)

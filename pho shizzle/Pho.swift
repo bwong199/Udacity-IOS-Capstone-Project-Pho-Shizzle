@@ -17,7 +17,7 @@ class Pho : Comparable{
     var phoneNumber = 0
     var rating = ""
     var votes = ""
-    var distanceFromUser = 0
+    var distanceFromUser = 0.00
     var gRating = 0.00
     var yRating = 0.00
     
@@ -29,7 +29,7 @@ class Pho : Comparable{
 }
 
 func < (lhs: Pho, rhs: Pho) -> Bool {
-    return rhs.rating < lhs.rating
+    return lhs.distanceFromUser < rhs.distanceFromUser
 }
 
 func == (lhs: Pho, rhs: Pho) -> Bool {
