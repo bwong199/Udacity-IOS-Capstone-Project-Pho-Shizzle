@@ -19,6 +19,7 @@ class Business: NSObject {
     let ratingImageURL: NSURL?
     let reviewCount: NSNumber?
     let rating: Double?
+    let phoneNumber: String?
     
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
@@ -79,6 +80,8 @@ class Business: NSObject {
         
         
         rating = dictionary["rating"] as? Double
+        
+        phoneNumber = dictionary["phone"] as? String
     }
     
     class func businesses(array array: [NSDictionary]) -> [Business] {

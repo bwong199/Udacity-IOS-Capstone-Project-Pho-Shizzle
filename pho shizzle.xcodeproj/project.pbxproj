@@ -20,6 +20,7 @@
 		C5A5FB251CBEA617001AA4C2 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5FB231CBEA617001AA4C2 /* YelpClient.swift */; };
 		C5A5FB261CBEA617001AA4C2 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5FB241CBEA617001AA4C2 /* Business.swift */; };
 		C5CBD8271CBFF07700F08BAB /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */; };
+		C5CBD8291CC0051A00F08BAB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CBD8281CC0051A00F08BAB /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C5A5FB231CBEA617001AA4C2 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		C5A5FB241CBEA617001AA4C2 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		C5CBD8281CC0051A00F08BAB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */,
 				C51B5AC61CBCA38100C6F68E /* Pho.swift */,
 				C51B5AB31CBC981200C6F68E /* ViewController.swift */,
+				C5CBD8281CC0051A00F08BAB /* DetailViewController.swift */,
 				C54134241CBDDCAF0051B800 /* DataFetch.swift */,
 				C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */,
 				C51B5AB51CBC981200C6F68E /* Main.storyboard */,
@@ -239,6 +242,7 @@
 				C51B5ABA1CBC981200C6F68E /* pho_shizzle.xcdatamodeld in Sources */,
 				C51B5AC71CBCA38100C6F68E /* Pho.swift in Sources */,
 				C5A5FB261CBEA617001AA4C2 /* Business.swift in Sources */,
+				C5CBD8291CC0051A00F08BAB /* DetailViewController.swift in Sources */,
 				C51B5AC91CBCA89F00C6F68E /* GlobalVariables.swift in Sources */,
 				C5A5FB251CBEA617001AA4C2 /* YelpClient.swift in Sources */,
 			);

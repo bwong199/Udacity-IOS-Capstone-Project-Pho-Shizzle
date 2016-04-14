@@ -14,12 +14,15 @@ class Pho : Comparable{
     var name = ""
     var address = ""
     var postalCode = ""
-    var phoneNumber = 0
+    var phoneNumber = ""
     var rating = ""
     var votes = ""
     var distanceFromUser = 0.00
+    var latitude = 0.00
+    var longitude = 0.00
     var gRating = 0.00
     var yRating = 0.00
+    var yVotes = 0
     
     
     init(){

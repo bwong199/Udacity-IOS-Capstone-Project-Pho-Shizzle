@@ -66,6 +66,9 @@ class DataFetch {
                                     let phoLatitudeD = Double(phoLatitude)
                                     let phoLongitudeD = Double(phoLongitude)
                                     
+                                    newPho.latitude = phoLatitudeD!
+                                    newPho.longitude = phoLongitudeD!
+                                    
                                     let userLocation:CLLocation = CLLocation(latitude: GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude)
                                     let phoLocation:CLLocation = CLLocation(latitude: phoLatitudeD!, longitude: phoLongitudeD!)
                                     
@@ -73,7 +76,7 @@ class DataFetch {
                                     
                                     newPho.distanceFromUser = phoDistance / 1000
                                     
-                                    print("Pho Distance \(phoDistance)")
+//                                    print("Pho Distance \(phoDistance)")
                                     GlobalVariables.phoInfoList.append(newPho)
                                     
                                     GlobalVariables.phoInfoList.sortInPlace()
@@ -105,7 +108,7 @@ class DataFetch {
                     
                     completionHandler(success: true, error: nil, results: [])
                     
-                    print(jsonResult)
+//                    print(jsonResult)
                     
                 } catch {
                     print("JSON Serialization failed")
@@ -136,7 +139,7 @@ class DataFetch {
                         
                         if jsonResult.count > 0 {
                             
-                            //                            print(jsonResult)
+                                                        print(jsonResult)
                             
                             if let items = jsonResult["results"] as? NSArray {
                                 
