@@ -34,56 +34,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-
-        
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        DataFetch().fetchZomatoData(0){(success, error, results) in
-            if success {
-                for x in GlobalVariables.phoInfoList {
-                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
-                    
-                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
-                        self.businesses = businesses
-                 
-                        
-                        if let businesses = businesses as? [Business] {
-                            for business in businesses {
-                                
-                                for x in GlobalVariables.phoInfoList {
-                                    
-                                    //                                print(x.name)
-                                    //                                print(business.name)
-                                    //                                print(x.address)
-                                    //                                print(business.address!)
-                                    
-                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
-                                        //
-                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
-                                    {
-                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
-                                        x.yRating = Double(business.rating!)
-                                        
-                                    }
-                                }
-                                
-                            }
-                        }
-
-                    })
-                    
-                    
-                    self.tableView.reloadData()
-                }
-                
-            } else {
-                
-            }
-        }
-        
-        
     }
     
     
@@ -101,7 +54,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         GlobalVariables.userLatitude = userLocation.coordinate.latitude
         GlobalVariables.userLongitude = userLocation.coordinate.longitude
         
-//        print("\(GlobalVariables.userLatitude) \(GlobalVariables.userLongitude)")
+        //        print("\(GlobalVariables.userLatitude) \(GlobalVariables.userLongitude)")
         
         // Put location to where user is
         CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler:  { (placemarks, error) -> Void in
@@ -129,9 +82,52 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         })
         
+        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 0){(success, error, results) in
+            if success {
+                for x in GlobalVariables.phoInfoList {
+                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
+                    
+                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+                        self.businesses = businesses
+                        
+                        
+                        if let businesses = businesses as? [Business] {
+                            for business in businesses {
+                                
+                                for x in GlobalVariables.phoInfoList {
+                                    
+                                    //                                print(x.name)
+                                    //                                print(business.name)
+                                    //                                print(x.address)
+                                    //                                print(business.address!)
+                                    
+                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
+                                        //
+                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
+                                    {
+                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
+                                        x.yRating = Double(business.rating!)
+                                        
+                                    }
+                                }
+                                
+                            }
+                        }
+                        
+                    })
+                    
+                    
+                    self.tableView.reloadData()
+                }
+                
+            } else {
+                
+            }
+        }
         
         
-                                manager.startMonitoringSignificantLocationChanges()
+        manager.stopUpdatingLocation()
+        manager.startMonitoringSignificantLocationChanges()
         
         
         

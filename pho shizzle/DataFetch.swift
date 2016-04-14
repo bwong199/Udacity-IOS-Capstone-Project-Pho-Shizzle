@@ -11,8 +11,8 @@ import UIKit
 class DataFetch {
     var businesses: [Business]!
     
-    func fetchZomatoData (page: Int, completionHandler:(success: Bool, error: String?, results: [Pho]) -> Void){
-        let url = NSURL(string: "https://developers.zomato.com/api/v2.1/search?q=vietnamese&lat=51.03&lon=-114.14&apikey=32cca5c64d799522c794ef24c5ebd21c&radius=10000&cuisines=vietnamese&start=\(page)")! ;
+    func fetchZomatoData (latitude: Double, longitude: Double, page: Int, completionHandler:(success: Bool, error: String?, results: [Pho]) -> Void){
+        let url = NSURL(string: "https://developers.zomato.com/api/v2.1/search?q=vietnamese&lat=\(latitude)&lon=\(longitude)&apikey=32cca5c64d799522c794ef24c5ebd21c&radius=10000&cuisines=vietnamese&start=\(page)")! ;
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url){(data, response, error) -> Void in
             if let data = data {
@@ -107,7 +107,7 @@ class DataFetch {
         let urlParamter = phoPlace.stringByReplacingOccurrencesOfString(" ", withString: "%20")
         
         if let phoPlace = phoPlace as? String {
-            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.03%2C-114.14&radius=10000&type=restaurant&keyword=\(urlParamter)&key=AIzaSyAtq_jKJ6O-pM-wwvwpCx1n31yjwcI2cPI")!
+            let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(GlobalVariables.userLatitude)%2C\(GlobalVariables.userLongitude)&radius=10000&type=restaurant&keyword=\(urlParamter)&key=AIzaSyAtq_jKJ6O-pM-wwvwpCx1n31yjwcI2cPI")!
             
             //            print(url)
             
