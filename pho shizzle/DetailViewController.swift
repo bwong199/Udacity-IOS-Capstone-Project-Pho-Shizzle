@@ -36,17 +36,17 @@ class DetailViewController: UIViewController {
         phoneLabel.text = String(pho!.phoneNumber)
         addressLabel.text = pho!.address
         
-        zomatoLabel.text = "Zomato - \(pho!.rating) - \(pho!.votes)"
+        zomatoLabel.text = "\(pho!.rating) - \(pho!.votes)"
         
-        googleLabel.text = "Google - \(pho?.gRating)"
+        googleLabel.text = "\(pho?.gRating)"
         
-        yelpLabel.text = "Yelp - \(pho!.yRating) - \(pho!.yVotes)"
+        yelpLabel.text = "\(pho!.yRating) - \(pho!.yVotes)"
         
         let latitudeAnn:CLLocationDegrees = pho!.latitude
         let longitudeAnn:CLLocationDegrees = pho!.longitude
         
-        let latDelta:CLLocationDegrees = 0.1
-        let lonDelta:CLLocationDegrees = 0.1
+        let latDelta:CLLocationDegrees = 0.05
+        let lonDelta:CLLocationDegrees = 0.05
         
         let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
         

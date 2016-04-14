@@ -21,6 +21,9 @@
 		C5A5FB261CBEA617001AA4C2 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5FB241CBEA617001AA4C2 /* Business.swift */; };
 		C5CBD8271CBFF07700F08BAB /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */; };
 		C5CBD8291CC0051A00F08BAB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CBD8281CC0051A00F08BAB /* DetailViewController.swift */; };
+		C5CBD82D1CC03E7300F08BAB /* yelp.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CBD82A1CC03E7300F08BAB /* yelp.png */; };
+		C5CBD82E1CC03E7300F08BAB /* zomato.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CBD82B1CC03E7300F08BAB /* zomato.png */; };
+		C5CBD82F1CC03E7300F08BAB /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CBD82C1CC03E7300F08BAB /* google.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		C5A5FB241CBEA617001AA4C2 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C5CBD8281CC0051A00F08BAB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C5CBD82A1CC03E7300F08BAB /* yelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yelp.png; sourceTree = "<group>"; };
+		C5CBD82B1CC03E7300F08BAB /* zomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zomato.png; sourceTree = "<group>"; };
+		C5CBD82C1CC03E7300F08BAB /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,9 @@
 		C51B5AB01CBC981200C6F68E /* pho shizzle */ = {
 			isa = PBXGroup;
 			children = (
+				C5CBD82A1CC03E7300F08BAB /* yelp.png */,
+				C5CBD82B1CC03E7300F08BAB /* zomato.png */,
+				C5CBD82C1CC03E7300F08BAB /* google.png */,
 				C5A5FB231CBEA617001AA4C2 /* YelpClient.swift */,
 				C5A5FB241CBEA617001AA4C2 /* Business.swift */,
 				C51B5AB11CBC981200C6F68E /* AppDelegate.swift */,
@@ -175,7 +184,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51B5ABF1CBC981200C6F68E /* LaunchScreen.storyboard in Resources */,
+				C5CBD82D1CC03E7300F08BAB /* yelp.png in Resources */,
 				C51B5ABC1CBC981200C6F68E /* Assets.xcassets in Resources */,
+				C5CBD82E1CC03E7300F08BAB /* zomato.png in Resources */,
+				C5CBD82F1CC03E7300F08BAB /* google.png in Resources */,
 				C51B5AB71CBC981200C6F68E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
