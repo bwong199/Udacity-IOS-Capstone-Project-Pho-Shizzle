@@ -10,4 +10,7 @@ import UIKit
 
 class GlobalVariables {
     static var phoInfoList : [Pho] = []
+    static var userLatitude : Double = 0.0
+    static var userLongitude : Double = 0.0
+
 }

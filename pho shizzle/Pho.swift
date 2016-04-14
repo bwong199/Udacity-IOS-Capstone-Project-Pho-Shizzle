@@ -8,7 +8,9 @@
 
 import UIKit
 
-class Pho {
+
+
+class Pho : Comparable{
     var name = ""
     var address = ""
     var postalCode = ""
@@ -19,7 +21,17 @@ class Pho {
     var gRating = 0.00
     var yRating = 0.00
     
+    
     init(){
         
     }
+
+}
+
+func < (lhs: Pho, rhs: Pho) -> Bool {
+    return rhs.rating < lhs.rating
+}
+
+func == (lhs: Pho, rhs: Pho) -> Bool {
+    return lhs.name == rhs.name
 }

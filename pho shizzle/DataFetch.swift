@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 class DataFetch {
     var businesses: [Business]!
     
@@ -59,8 +56,10 @@ class DataFetch {
                                     
                                     let phoAddress = restaurant["location"]!["address"]!! as! String
                                     newPho.address = phoAddress
-                                    
+                                    print(newPho)
                                     GlobalVariables.phoInfoList.append(newPho)
+                                    
+                                    GlobalVariables.phoInfoList.sortInPlace()
                                     
                                     DataFetch().fetchGoogleData(phoName, address: phoAddress ){(success, error, results) in
                                         if success {
@@ -89,7 +88,7 @@ class DataFetch {
                     
                     completionHandler(success: true, error: nil, results: [])
                     
-                    //                    print(jsonResult)
+                                        print(jsonResult)
                     
                 } catch {
                     print("JSON Serialization failed")
@@ -103,8 +102,8 @@ class DataFetch {
     }
     
     func fetchGoogleData(phoPlace: String, address: String, completionHandler:(success: Bool, error: String?, results: [Pho]) -> Void){
-//        print(phoPlace)
-//        
+        //        print(phoPlace)
+        //
         let urlParamter = phoPlace.stringByReplacingOccurrencesOfString(" ", withString: "%20")
         
         if let phoPlace = phoPlace as? String {
@@ -123,7 +122,7 @@ class DataFetch {
                             print(jsonResult)
                             
                             if let items = jsonResult["results"] as? NSArray {
-                             
+                                
                                 
                                 if  let items = items as? NSArray {
                                     for item in items {
@@ -139,7 +138,7 @@ class DataFetch {
                                                 
                                                 if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(4)) == name.lowercaseString.substringToIndex(name.startIndex.advancedBy(4))
                                                     
-//                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(4)) == phoAddress.lowercaseString.substringToIndex(phoAddress.startIndex.advancedBy(4))
+                                                    //                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(4)) == phoAddress.lowercaseString.substringToIndex(phoAddress.startIndex.advancedBy(4))
                                                 {
                                                     x.gRating = rating
                                                 }
