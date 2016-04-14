@@ -8,6 +8,10 @@
 
 import UIKit
 
-class CustomTableViewCell {
+class CustomTableViewCell : UITableViewCell{
+    
+    @IBOutlet var title: UILabel!
+    @IBOutlet var subtitle: UILabel!
+    @IBOutlet var distance: UILabel!
     
 }
