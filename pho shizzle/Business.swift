@@ -81,7 +81,7 @@ class Business: NSObject {
         
         rating = dictionary["rating"] as? Double
         
-        phoneNumber = dictionary["phone"] as? String
+        phoneNumber = dictionary["display_phone"] as? String
     }
     
     class func businesses(array array: [NSDictionary]) -> [Business] {

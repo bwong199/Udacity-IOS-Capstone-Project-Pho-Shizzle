@@ -76,7 +76,7 @@ class DataFetch {
                                     
                                     newPho.distanceFromUser = phoDistance / 1000
                                     
-//                                    print("Pho Distance \(phoDistance)")
+                                    //                                    print("Pho Distance \(phoDistance)")
                                     GlobalVariables.phoInfoList.append(newPho)
                                     
                                     GlobalVariables.phoInfoList.sortInPlace()
@@ -90,8 +90,7 @@ class DataFetch {
                                         
                                     }
                                     
-                                    
-                                    
+
                                     let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0] as? ViewController
                                     
                                     
@@ -108,7 +107,7 @@ class DataFetch {
                     
                     completionHandler(success: true, error: nil, results: [])
                     
-//                    print(jsonResult)
+                    //                    print(jsonResult)
                     
                 } catch {
                     print("JSON Serialization failed")
@@ -139,7 +138,7 @@ class DataFetch {
                         
                         if jsonResult.count > 0 {
                             
-                                                        print(jsonResult)
+                            //                                                        print(jsonResult)
                             
                             if let items = jsonResult["results"] as? NSArray {
                                 
@@ -156,7 +155,7 @@ class DataFetch {
                                                 //                                                print(x.address)
                                                 //                                                print(phoAddress)
                                                 
-                                                if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(4)) == name.lowercaseString.substringToIndex(name.startIndex.advancedBy(4))
+                                                if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == name.lowercaseString.substringToIndex(name.startIndex.advancedBy(2))
                                                     
                                                     //                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(4)) == phoAddress.lowercaseString.substringToIndex(phoAddress.startIndex.advancedBy(4))
                                                 {

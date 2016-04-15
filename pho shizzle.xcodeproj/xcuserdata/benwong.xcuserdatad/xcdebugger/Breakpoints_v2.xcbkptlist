@@ -17,38 +17,6 @@
             endingLineNumber = "28"
             landmarkName = "init()"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "protocol witness for static Swift.Comparable.&lt; infix (A, A) -&gt; Swift.Bool in conformance pho_shizzle.Pho : Swift.Comparable in pho_shizzle"
-                  moduleName = "pho shizzle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/benwong/Desktop/IOS/phoShizzle/pho%20shizzle/Pho.swift"
-                  timestampString = "482349684.062273"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static pho_shizzle.&lt; infix (pho_shizzle.Pho, pho_shizzle.Pho) -&gt; Swift.Bool"
-                  moduleName = "pho shizzle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/benwong/Desktop/IOS/phoShizzle/pho%20shizzle/Pho.swift"
-                  timestampString = "482349684.062452"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
