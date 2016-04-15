@@ -24,6 +24,7 @@
 		C5CBD82D1CC03E7300F08BAB /* yelp.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CBD82A1CC03E7300F08BAB /* yelp.png */; };
 		C5CBD82E1CC03E7300F08BAB /* zomato.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CBD82B1CC03E7300F08BAB /* zomato.png */; };
 		C5CBD82F1CC03E7300F08BAB /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CBD82C1CC03E7300F08BAB /* google.png */; };
+		C5F1681A1CC199BB00BAFEB0 /* FavPhoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F168191CC199BB00BAFEB0 /* FavPhoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C5CBD82A1CC03E7300F08BAB /* yelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yelp.png; sourceTree = "<group>"; };
 		C5CBD82B1CC03E7300F08BAB /* zomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zomato.png; sourceTree = "<group>"; };
 		C5CBD82C1CC03E7300F08BAB /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
+		C5F168191CC199BB00BAFEB0 /* FavPhoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavPhoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */,
 				C51B5AC61CBCA38100C6F68E /* Pho.swift */,
 				C51B5AB31CBC981200C6F68E /* ViewController.swift */,
+				C5F168191CC199BB00BAFEB0 /* FavPhoViewController.swift */,
 				C5CBD8281CC0051A00F08BAB /* DetailViewController.swift */,
 				C54134241CBDDCAF0051B800 /* DataFetch.swift */,
 				C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */,
@@ -250,6 +253,7 @@
 				C5CBD8271CBFF07700F08BAB /* CustomTableViewCell.swift in Sources */,
 				C51B5AB41CBC981200C6F68E /* ViewController.swift in Sources */,
 				C51B5AB21CBC981200C6F68E /* AppDelegate.swift in Sources */,
+				C5F1681A1CC199BB00BAFEB0 /* FavPhoViewController.swift in Sources */,
 				C54134251CBDDCAF0051B800 /* DataFetch.swift in Sources */,
 				C51B5ABA1CBC981200C6F68E /* pho_shizzle.xcdatamodeld in Sources */,
 				C51B5AC71CBCA38100C6F68E /* Pho.swift in Sources */,

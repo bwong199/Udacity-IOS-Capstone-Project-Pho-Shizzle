@@ -28,7 +28,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AJb-vx-HQ1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AJb-vx-HQ1">
                                 <rect key="frame" x="0.0" y="129" width="600" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="zz4-nX-fop">
@@ -98,6 +98,7 @@
                             <constraint firstAttribute="trailing" secondItem="AJb-vx-HQ1" secondAttribute="trailing" id="yfd-JT-GUn"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Nearby Pho" id="EBu-N3-AKI"/>
                     <navigationItem key="navigationItem" title="Ben Wong Pho Shizzle" id="bNl-nW-JxP"/>
                     <connections>
                         <outlet property="activityIndicator" destination="zz4-nX-fop" id="hli-Ul-Dha"/>
@@ -108,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1123" y="275"/>
+            <point key="canvasLocation" x="1783" y="-75"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="yQo-Ho-r33">
@@ -262,12 +263,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rja-E9-Wwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1827" y="275"/>
+            <point key="canvasLocation" x="2639" y="275"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Ben Wong Pho Shizzle-->
         <scene sceneID="Z9p-Sv-GZ8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ri-WO-i84" sceneMemberID="viewController">
+                <navigationController title="Ben Wong Pho Shizzle" automaticallyAdjustsScrollViewInsets="NO" id="0ri-WO-i84" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rCY-oI-pcE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -279,12 +280,91 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="kPw-qq-otT"/>
+                        <segue destination="3th-x2-Y3u" kind="relationship" relationship="rootViewController" id="kPw-qq-otT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7d8-Gn-Psh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431" y="249"/>
+            <point key="canvasLocation" x="223" y="139"/>
+        </scene>
+        <!--Ben Wong Pho Shizzle-->
+        <scene sceneID="MzE-y3-baG">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3th-x2-Y3u" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Ben Wong Pho Shizzle" id="mtH-Sp-YLK"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="9Wa-zA-A3R">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="lvN-xX-FYT"/>
+                        <segue destination="nHI-B7-fNe" kind="relationship" relationship="viewControllers" id="Hb1-SE-uaR"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BcW-3V-7HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="853" y="112"/>
+        </scene>
+        <!--Favourite Pho-->
+        <scene sceneID="nS5-mW-m9D">
+            <objects>
+                <viewController id="nHI-B7-fNe" customClass="FavPhoViewController" customModule="pho_shizzle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gXx-aK-a6G"/>
+                        <viewControllerLayoutGuide type="bottom" id="f7p-MV-ICd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8jZ-ez-wIx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ZH-e7-JZx">
+                                <rect key="frame" x="0.0" y="64" width="600" height="495"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="6jx-55-FQQ" detailTextLabel="psl-Th-bv2" style="IBUITableViewCellStyleSubtitle" id="wAL-tM-tIY">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wAL-tM-tIY" id="8sv-Kd-Y94">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6jx-55-FQQ">
+                                                    <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="psl-Th-bv2">
+                                                    <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9ZH-e7-JZx" firstAttribute="top" secondItem="gXx-aK-a6G" secondAttribute="bottom" id="24c-sa-Ifv"/>
+                            <constraint firstItem="9ZH-e7-JZx" firstAttribute="leading" secondItem="8jZ-ez-wIx" secondAttribute="leadingMargin" constant="-20" id="LfJ-1f-9Ar"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="9ZH-e7-JZx" secondAttribute="bottom" constant="41" id="b8m-48-pa0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9ZH-e7-JZx" secondAttribute="trailing" constant="-20" id="mrx-q9-YBo"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favourite Pho" id="FoQ-Gu-VZh"/>
+                    <connections>
+                        <outlet property="tableView" destination="9ZH-e7-JZx" id="6qX-VV-qHp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3pV-pG-iqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783" y="652"/>
         </scene>
     </scenes>
     <resources>
