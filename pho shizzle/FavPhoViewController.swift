@@ -21,12 +21,15 @@ class FavPhoViewController: UIViewController, UITableViewDataSource, UITableView
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-
+  
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        list.removeAll()
+    }
+
+    
     override func viewWillAppear(animated: Bool) {
-        
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -36,9 +39,8 @@ class FavPhoViewController: UIViewController, UITableViewDataSource, UITableView
         //        request.predicate = NSPredicate(format: "latitude = %@", latitude)
         
         
-        
-        
         request.returnsObjectsAsFaults = false
+        
         
         
         do {
@@ -50,26 +52,32 @@ class FavPhoViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 
                 for result in results as! [NSManagedObject] {
-                    
-                    var newPho = Pho()
-                    newPho.name = result.valueForKey("name") as! String
-                    newPho.address = result.valueForKey("address") as! String
-                    newPho.phoneNumber = result.valueForKey("phone") as! String
-                    newPho.latitude = result.valueForKey("latitude") as! Double
-                    newPho.longitude = result.valueForKey("longitude") as! Double
-                    
-                    list.append(newPho)
-                    
-                    dispatch_async(dispatch_get_main_queue(),{
+             
+                
+                            var newPho = Pho()
+                            newPho.name = result.valueForKey("name") as! String
+                            newPho.address = result.valueForKey("address") as! String
+                            newPho.phoneNumber = result.valueForKey("phone") as! String
+                            newPho.latitude = result.valueForKey("latitude") as! Double
+                            newPho.longitude = result.valueForKey("longitude") as! Double
+                            
+                            list.append(newPho)
+                            
+                            dispatch_async(dispatch_get_main_queue(),{
+                                
+                                self.tableView.reloadData()
+                                
+                            })
                         
-                        self.tableView.reloadData()
-                        
-                    })
+                    
+                    
                 }
             }
         } catch {
         }
+        
 
+        
     }
     
     

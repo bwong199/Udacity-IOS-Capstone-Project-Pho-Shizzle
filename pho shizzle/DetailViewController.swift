@@ -35,18 +35,44 @@ class DetailViewController: UIViewController  {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        titleLabel.text = pho!.name
-        phoneLabel.text = String(pho!.phoneNumber)
-        addressLabel.text = pho!.address
+
         
-        zomatoLabel.text = "\(pho!.rating) - \(pho!.votes) reviews"
+        // We need just to get the documents folder url
+        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         
-        googleLabel.text = "\(pho!.gRating)"
+        //         now lets get the directory contents (including folders)
         
-        yelpLabel.text = "\(pho!.yRating) - \(pho!.yVotes) reviews"
+//        do {
+//            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+//            print(directoryContents)
+//            
+//            for x in directoryContents {
+//                print(x)
+//            }
+//            
+//        } catch let error as NSError {
+//            print(error.localizedDescription)
+//        }
         
-        let latitudeAnn:CLLocationDegrees = pho!.latitude
-        let longitudeAnn:CLLocationDegrees = pho!.longitude
+        
+
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.titleLabel.text = self.pho!.name
+        self.phoneLabel.text = String(self.pho!.phoneNumber)
+        self.addressLabel.text = self.pho!.address
+        
+        self.zomatoLabel.text = "\(self.pho!.rating) - \(self.pho!.votes) reviews"
+        
+        self.googleLabel.text = "\(self.pho!.gRating)"
+        
+        self.yelpLabel.text = "\(self.pho!.yRating) - \(self.pho!.yVotes) reviews"
+        
+        let latitudeAnn:CLLocationDegrees = self.pho!.latitude
+        let longitudeAnn:CLLocationDegrees = self.pho!.longitude
         
         let latDelta:CLLocationDegrees = 0.05
         let lonDelta:CLLocationDegrees = 0.05
@@ -63,34 +89,15 @@ class DetailViewController: UIViewController  {
         
         self.mapView.addAnnotation(annotation)
         
-        mapView.setRegion(region, animated: true)
-        
-        // We need just to get the documents folder url
-        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-        
-        //         now lets get the directory contents (including folders)
-
-        do {
-            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
-            print(directoryContents)
-            
-            for x in directoryContents {
-                print(x)
-            }
-            
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        
-        
+        self.mapView.setRegion(region, animated: true)
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let context: NSManagedObjectContext = appDel.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Restaurant")
         //        request.predicate = NSPredicate(format: "latitude = %@", latitude)
-        let firstPredicate = NSPredicate(format: "name = %@", "\(pho!.name)")
-        let secondPredicate = NSPredicate(format: "address = %@", "\(pho!.address)")
+        let firstPredicate = NSPredicate(format: "name = %@", "\(self.pho!.name)")
+        let secondPredicate = NSPredicate(format: "address = %@", "\(self.pho!.address)")
         request.returnsObjectsAsFaults = false
         
         request.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [firstPredicate, secondPredicate])
@@ -101,7 +108,7 @@ class DetailViewController: UIViewController  {
             
             if results.count > 0 {
                 print(results)
-                saveButton.hidden = true
+                self.saveButton.hidden = true
                 
                 for result in results as! [NSManagedObject] {
                     
@@ -110,32 +117,32 @@ class DetailViewController: UIViewController  {
             }
         } catch {
         }
-        
     }
     
     
     @IBAction func initDirection(sender: AnyObject) {
+
         
         
-        let latitudeAnn:CLLocationDegrees = pho!.latitude
-        let longitudeAnn:CLLocationDegrees = pho!.longitude
+                let latitudeAnn:CLLocationDegrees = self.pho!.latitude
+                let longitudeAnn:CLLocationDegrees = self.pho!.longitude
         
-        let coordinates:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitudeAnn, longitudeAnn)
+                let coordinates:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitudeAnn, longitudeAnn)
         
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-        let mapItem = MKMapItem(placemark: placemark)
+                let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                let mapItem = MKMapItem(placemark: placemark)
         
-        mapItem.name = "\(pho!.name)"
+                mapItem.name = "\(self.pho!.name)"
         
-        mapItem.openInMapsWithLaunchOptions(launchOptions)
+                mapItem.openInMapsWithLaunchOptions(launchOptions)
         
         
     }
     
     @IBAction func savePho(sender: AnyObject) {
         
-        saveButton.hidden = true
+        self.saveButton.hidden = true
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -143,15 +150,15 @@ class DetailViewController: UIViewController  {
         
         let newRestaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: context)
         
-        newRestaurant.setValue(pho!.latitude, forKey: "latitude")
+        newRestaurant.setValue(self.pho!.latitude, forKey: "latitude")
         
-        newRestaurant.setValue(pho!.longitude, forKey: "longitude")
+        newRestaurant.setValue(self.pho!.longitude, forKey: "longitude")
         
-        newRestaurant.setValue(pho!.name, forKey: "name")
+        newRestaurant.setValue(self.pho!.name, forKey: "name")
         
-        newRestaurant.setValue(pho!.phoneNumber, forKey: "phone")
+        newRestaurant.setValue(self.pho!.phoneNumber, forKey: "phone")
         
-        newRestaurant.setValue(pho!.address, forKey: "address")
+        newRestaurant.setValue(self.pho!.address, forKey: "address")
         
         do {
             try context.save()
