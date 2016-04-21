@@ -87,6 +87,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q16-fy-IOw">
+                                <rect key="frame" x="20" y="82" width="411" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="411" id="wxD-2e-Nni"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Refresh Location"/>
+                                <connections>
+                                    <action selector="refreshButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ijK-Nw-qBp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -95,6 +106,8 @@
                             <constraint firstItem="AJb-vx-HQ1" firstAttribute="top" secondItem="LkO-84-35x" secondAttribute="bottom" constant="8" symbolic="YES" id="ThJ-bA-WSf"/>
                             <constraint firstItem="AJb-vx-HQ1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WcC-nZ-bCo"/>
                             <constraint firstItem="LkO-84-35x" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="b93-1x-DAA"/>
+                            <constraint firstItem="q16-fy-IOw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j1C-Bf-m93"/>
+                            <constraint firstItem="q16-fy-IOw" firstAttribute="centerY" secondItem="LkO-84-35x" secondAttribute="centerY" id="uKX-K1-0IN"/>
                             <constraint firstAttribute="trailing" secondItem="AJb-vx-HQ1" secondAttribute="trailing" id="yfd-JT-GUn"/>
                         </constraints>
                     </view>
@@ -330,16 +343,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6jx-55-FQQ">
-                                                    <rect key="frame" x="15" y="7" width="26.5" height="16"/>
+                                                    <rect key="frame" x="15" y="9" width="25" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="psl-Th-bv2">
-                                                    <rect key="frame" x="15" y="23" width="40.5" height="13.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="psl-Th-bv2">
+                                                    <rect key="frame" x="15" y="23.5" width="37.5" height="12"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

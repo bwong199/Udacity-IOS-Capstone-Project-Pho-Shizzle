@@ -91,60 +91,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         manager.stopUpdatingLocation()
         //        manager.startMonitoringSignificantLocationChanges()
         
-            DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 0){(success, error, results) in
-                if success {
-                    for x in GlobalVariables.phoInfoList {
-                   
-                        //                            print("\(x.name) \(x.rating) \(x.gRating)")
-                        
-                        Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
-                            self.businesses = businesses
-                            
-                            
-                            if let businesses = businesses as? [Business] {
-                                for business in businesses {
-                                    
-                                    //                                print(business.phoneNumber)
-                                    
-                                    for x in GlobalVariables.phoInfoList {
-                                        
-                                        if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
-                                            //
-                                            //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
-                                        {
-                                            //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
-                                            if let phoneNumber = business.phoneNumber  {
-                                                x.phoneNumber = phoneNumber
-                                                
-                                            }
-                                            
-                                            x.yRating = Double(business.rating!)
-                                            x.yVotes = Int(business.reviewCount!)
-                                            //                                        x.phoneNumber = business.phoneNumber!
-                                        }
-                                    }
-                                }
-                            }
-                            
-                            self.activityIndicator.stopAnimating()
-                        })
-                        
-                        
-                        dispatch_async(dispatch_get_main_queue(),{
-                            
-                            self.tableView.reloadData()
-                            
-                        })
-                        
-                        
-                    }
-                    
-                } else {
-                    
-                }
-            }
-        
-        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 21){(success, error, results) in
+        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 0){(success, error, results) in
             if success {
                 for x in GlobalVariables.phoInfoList {
                     
@@ -197,59 +144,127 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         
+        //        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 21){(success, error, results) in
+        //            if success {
+        //                for x in GlobalVariables.phoInfoList {
+        //
+        //                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
+        //
+        //                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        //                        self.businesses = businesses
+        //
+        //
+        //                        if let businesses = businesses as? [Business] {
+        //                            for business in businesses {
+        //
+        //                                //                                print(business.phoneNumber)
+        //
+        //                                for x in GlobalVariables.phoInfoList {
+        //
+        //                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
+        //                                        //
+        //                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
+        //                                    {
+        //                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
+        //                                        if let phoneNumber = business.phoneNumber  {
+        //                                            x.phoneNumber = phoneNumber
+        //
+        //                                        }
+        //
+        //                                        x.yRating = Double(business.rating!)
+        //                                        x.yVotes = Int(business.reviewCount!)
+        //                                        //                                        x.phoneNumber = business.phoneNumber!
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //
+        //                        self.activityIndicator.stopAnimating()
+        //                    })
+        //
+        //
+        //                    dispatch_async(dispatch_get_main_queue(),{
+        //
+        //                        self.tableView.reloadData()
+        //
+        //                    })
+        //
+        //
+        //                }
+        //
+        //            } else {
+        //
+        //            }
+        //        }
         
-        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 42){(success, error, results) in
-            if success {
-                for x in GlobalVariables.phoInfoList {
-                    
-                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
-                    
-                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
-                        self.businesses = businesses
-                        
-                        
-                        if let businesses = businesses as? [Business] {
-                            for business in businesses {
-                                
-                                //                                print(business.phoneNumber)
-                                
-                                for x in GlobalVariables.phoInfoList {
-                                    
-                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
-                                        //
-                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
-                                    {
-                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
-                                        if let phoneNumber = business.phoneNumber  {
-                                            x.phoneNumber = phoneNumber
-                                            
-                                        }
-                                        
-                                        x.yRating = Double(business.rating!)
-                                        x.yVotes = Int(business.reviewCount!)
-                                        //                                        x.phoneNumber = business.phoneNumber!
-                                    }
-                                }
-                            }
-                        }
-                        
-                        self.activityIndicator.stopAnimating()
-                    })
-                    
-                    
-                    dispatch_async(dispatch_get_main_queue(),{
-                        
-                        self.tableView.reloadData()
-                        
-                    })
-                    
-                    
-                }
-                
-            } else {
-                
-            }
-        }
+        
+        //        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 42){(success, error, results) in
+        //            if success {
+        //                for x in GlobalVariables.phoInfoList {
+        //
+        //                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
+        //
+        //                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        //                        self.businesses = businesses
+        //
+        //
+        //                        if let businesses = businesses as? [Business] {
+        //                            for business in businesses {
+        //
+        //                                //                                print(business.phoneNumber)
+        //
+        //                                for x in GlobalVariables.phoInfoList {
+        //
+        //                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
+        //                                        //
+        //                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
+        //                                    {
+        //                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
+        //                                        if let phoneNumber = business.phoneNumber  {
+        //                                            x.phoneNumber = phoneNumber
+        //
+        //                                        }
+        //
+        //                                        x.yRating = Double(business.rating!)
+        //                                        x.yVotes = Int(business.reviewCount!)
+        //                                        //                                        x.phoneNumber = business.phoneNumber!
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //
+        //                        self.activityIndicator.stopAnimating()
+        //                    })
+        //
+        //
+        //                    dispatch_async(dispatch_get_main_queue(),{
+        //
+        //                        self.tableView.reloadData()
+        //
+        //                    })
+        //
+        //
+        //                }
+        //
+        //            } else {
+        //
+        //            }
+        //        }
+        
+    }
+    
+    @IBAction func refreshButton(sender: AnyObject) {
+        
+        GlobalVariables.phoInfoList.removeAll()
+        
+        
+        self.tableView.reloadData()
+        
+        
+        activityIndicator.startAnimating()
+        
+        manager.startUpdatingLocation()
+        
         
     }
     

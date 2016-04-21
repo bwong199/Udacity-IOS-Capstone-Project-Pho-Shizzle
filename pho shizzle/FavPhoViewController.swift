@@ -96,9 +96,9 @@ class FavPhoViewController: UIViewController, UITableViewDataSource, UITableView
         
         let pho = list[indexPath.row]
         
-        cell.textLabel!.text = "\(pho.name) - \(pho.phoneNumber)"
+        cell.textLabel!.text = "\(pho.name) "
         
-        cell.detailTextLabel!.text = "\(pho.address)"
+        cell.detailTextLabel!.text = "\(pho.address) - \(pho.phoneNumber)"
         
         return cell
     }
