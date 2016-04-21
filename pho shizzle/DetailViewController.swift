@@ -40,24 +40,12 @@ class DetailViewController: UIViewController  {
         // We need just to get the documents folder url
         let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         
-        //         now lets get the directory contents (including folders)
-        
-//        do {
-//            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
-//            print(directoryContents)
-//            
-//            for x in directoryContents {
-//                print(x)
-//            }
-//            
-//        } catch let error as NSError {
-//            print(error.localizedDescription)
-//        }
-        
-        
 
-        
+
+       
     }
+    
+
     
     override func viewWillAppear(animated: Bool) {
         

@@ -17,6 +17,7 @@
 		C51B5AC71CBCA38100C6F68E /* Pho.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B5AC61CBCA38100C6F68E /* Pho.swift */; };
 		C51B5AC91CBCA89F00C6F68E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */; };
 		C54134251CBDDCAF0051B800 /* DataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54134241CBDDCAF0051B800 /* DataFetch.swift */; };
+		C574CE0F1CC92CD1006C514A /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574CE0E1CC92CD1006C514A /* Reachability.swift */; };
 		C5A5FB251CBEA617001AA4C2 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5FB231CBEA617001AA4C2 /* YelpClient.swift */; };
 		C5A5FB261CBEA617001AA4C2 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5FB241CBEA617001AA4C2 /* Business.swift */; };
 		C5CBD8271CBFF07700F08BAB /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */; };
@@ -42,6 +43,7 @@
 		C51B5AC61CBCA38100C6F68E /* Pho.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pho.swift; sourceTree = "<group>"; };
 		C51B5AC81CBCA89F00C6F68E /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		C54134241CBDDCAF0051B800 /* DataFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetch.swift; sourceTree = "<group>"; };
+		C574CE0E1CC92CD1006C514A /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C5A5FB231CBEA617001AA4C2 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		C5A5FB241CBEA617001AA4C2 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		C5CBD8261CBFF07700F08BAB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				C51B5ABD1CBC981200C6F68E /* LaunchScreen.storyboard */,
 				C51B5AC01CBC981200C6F68E /* Info.plist */,
 				C51B5AB81CBC981200C6F68E /* pho_shizzle.xcdatamodeld */,
+				C574CE0E1CC92CD1006C514A /* Reachability.swift */,
 			);
 			path = "pho shizzle";
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			files = (
 				C5CBD8271CBFF07700F08BAB /* CustomTableViewCell.swift in Sources */,
 				C51B5AB41CBC981200C6F68E /* ViewController.swift in Sources */,
+				C574CE0F1CC92CD1006C514A /* Reachability.swift in Sources */,
 				C51B5AB21CBC981200C6F68E /* AppDelegate.swift in Sources */,
 				C5F1681A1CC199BB00BAFEB0 /* FavPhoViewController.swift in Sources */,
 				C54134251CBDDCAF0051B800 /* DataFetch.swift in Sources */,

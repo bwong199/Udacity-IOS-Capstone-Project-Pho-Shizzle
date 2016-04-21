@@ -130,10 +130,7 @@ class DataFetch {
                                     //                                        }
                                     //                                    }
                                     
-                                    
-                                    
-                                    
-                                    
+
                                     let viewController = UIApplication.sharedApplication().windows[0].rootViewController?.childViewControllers[0] as? ViewController
                                     
                                     

@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var tableView: UITableView!
     
     var manager:CLLocationManager!
+     var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +44,45 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
         
         activityIndicator.startAnimating()
+        
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refreshTable:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl) // not required when using UITableViewController
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        //Check if connected to the internet
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+        } else {
+            print("Internet connection FAILED")
+            var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
     }
     
     
-    
+    func refreshTable(sender:AnyObject) {
+        // Code to refresh table view
+        
+        GlobalVariables.phoInfoList.removeAll()
+        
+        
+        self.tableView.reloadData()
+        
+        
+        activityIndicator.startAnimating()
+        
+        manager.startUpdatingLocation()
+        
+        refreshControl.endRefreshing()
+    }
+
+
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //        print(locations)
@@ -148,133 +184,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 
             } else {
-                
+                dispatch_async(dispatch_get_main_queue(), {
+                    let alertController = UIAlertController(title: nil, message:
+                        "Failed to Download Data from Zomato", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    //                    self.presentViewController(alertController, animated: true, completion: nil)
+                })
             }
         }
         
-        //        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 21){(success, error, results) in
-        //            if success {
-        //                for x in GlobalVariables.phoInfoList {
-        //
-        //                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
-        //
-        //                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
-        //                        self.businesses = businesses
-        //
-        //
-        //                        if let businesses = businesses as? [Business] {
-        //                            for business in businesses {
-        //
-        //                                //                                print(business.phoneNumber)
-        //
-        //                                for x in GlobalVariables.phoInfoList {
-        //
-        //                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
-        //                                        //
-        //                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
-        //                                    {
-        //                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
-        //                                        if let phoneNumber = business.phoneNumber  {
-        //                                            x.phoneNumber = phoneNumber
-        //
-        //                                        }
-        //
-        //                                        x.yRating = Double(business.rating!)
-        //                                        x.yVotes = Int(business.reviewCount!)
-        //                                        //                                        x.phoneNumber = business.phoneNumber!
-        //                                    }
-        //                                }
-        //                            }
-        //                        }
-        //
-        //                        self.activityIndicator.stopAnimating()
-        //                    })
-        //
-        //
-        //                    dispatch_async(dispatch_get_main_queue(),{
-        //
-        //                        self.tableView.reloadData()
-        //
-        //                    })
-        //
-        //
-        //                }
-        //
-        //            } else {
-        //
-        //            }
-        //        }
-        
-        
-        //        DataFetch().fetchZomatoData(GlobalVariables.userLatitude, longitude: GlobalVariables.userLongitude, page: 42){(success, error, results) in
-        //            if success {
-        //                for x in GlobalVariables.phoInfoList {
-        //
-        //                    //                            print("\(x.name) \(x.rating) \(x.gRating)")
-        //
-        //                    Business.searchWithTerm(x.name, completion: { (businesses: [Business]!, error: NSError!) -> Void in
-        //                        self.businesses = businesses
-        //
-        //
-        //                        if let businesses = businesses as? [Business] {
-        //                            for business in businesses {
-        //
-        //                                //                                print(business.phoneNumber)
-        //
-        //                                for x in GlobalVariables.phoInfoList {
-        //
-        //                                    if x.name.lowercaseString.substringToIndex(x.name.startIndex.advancedBy(2)) == business.name!.lowercaseString.substringToIndex(business.name!.startIndex.advancedBy(2))
-        //                                        //
-        //                                        //                                                                    &&  x.address.lowercaseString.substringToIndex(x.address.startIndex.advancedBy(1)) == business.address!.lowercaseString.substringToIndex(business.address!.startIndex.advancedBy(1))
-        //                                    {
-        //                                        //                                    print("\(business.name!) \(business.address!) \(business.rating!)")
-        //                                        if let phoneNumber = business.phoneNumber  {
-        //                                            x.phoneNumber = phoneNumber
-        //
-        //                                        }
-        //
-        //                                        x.yRating = Double(business.rating!)
-        //                                        x.yVotes = Int(business.reviewCount!)
-        //                                        //                                        x.phoneNumber = business.phoneNumber!
-        //                                    }
-        //                                }
-        //                            }
-        //                        }
-        //
-        //                        self.activityIndicator.stopAnimating()
-        //                    })
-        //
-        //
-        //                    dispatch_async(dispatch_get_main_queue(),{
-        //
-        //                        self.tableView.reloadData()
-        //
-        //                    })
-        //
-        //
-        //                }
-        //
-        //            } else {
-        //
-        //            }
-        //        }
+
         
     }
     
-    @IBAction func refreshButton(sender: AnyObject) {
-        
-        GlobalVariables.phoInfoList.removeAll()
-        
-        
-        self.tableView.reloadData()
-        
-        
-        activityIndicator.startAnimating()
-        
-        manager.startUpdatingLocation()
-        
-        
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return GlobalVariables.phoInfoList.count
@@ -315,8 +238,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.subtitle.textColor = UIColor.blackColor()
             cell.distance.textColor = UIColor.blackColor()
         }
-        
-        
+
         return cell
     }
     
