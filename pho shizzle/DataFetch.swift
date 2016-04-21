@@ -54,18 +54,30 @@ class DataFetch {
                                     
                                     let newPho = Pho()
                                     
-                                    let phoName = restaurant["name"]! as! String
+                                    guard let phoName = restaurant["name"] as? String else{
+                                        continue
+                                    }
                                     newPho.name = phoName
-                                    newPho.rating = restaurant["user_rating"]!["aggregate_rating"] as! String
+                                    guard let rating = (restaurant["user_rating"]!["aggregate_rating"] as? String) else{
+                                        continue
+                                    }
+                                    newPho.rating = rating
                                     
+                                    guard let votes = restaurant["user_rating"]!["votes"] as? String else{
+                                        continue
+                                    }
+                                    newPho.votes = votes
+                                    guard let postalCode = restaurant["location"]!["zipcode"] as? String else{
+                                        continue
+                                    }
+                                    newPho.postalCode = postalCode
                                     
-                                    newPho.votes = restaurant["user_rating"]!["votes"] as! String
-                                    newPho.postalCode = restaurant["location"]!["zipcode"]!! as! String
+                                    guard let phoAddress = restaurant["location"]!["address"] as? String else{
+                                        continue
+                                    }
                                     
-                                    let phoAddress = restaurant["location"]!["address"]!! as! String
                                     newPho.address = phoAddress
-                                    
-                                    
+ 
                                     
                                     // Distance Calculation
                                     var phoLatitude = restaurant["location"]!["latitude"]!! as! String

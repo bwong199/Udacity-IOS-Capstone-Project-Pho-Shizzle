@@ -35,17 +35,17 @@ class DetailViewController: UIViewController  {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        
         
         // We need just to get the documents folder url
         let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         
-
-
-       
+        
+        
+        
     }
     
-
+    
     
     override func viewWillAppear(animated: Bool) {
         
@@ -109,21 +109,27 @@ class DetailViewController: UIViewController  {
     
     
     @IBAction func initDirection(sender: AnyObject) {
-
         
         
-                let latitudeAnn:CLLocationDegrees = self.pho!.latitude
-                let longitudeAnn:CLLocationDegrees = self.pho!.longitude
         
-                let coordinates:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitudeAnn, longitudeAnn)
+        let latitudeAnn:CLLocationDegrees = self.pho!.latitude
+        let longitudeAnn:CLLocationDegrees = self.pho!.longitude
         
-                let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-                let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                let mapItem = MKMapItem(placemark: placemark)
+        let coordinates:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitudeAnn, longitudeAnn)
         
-                mapItem.name = "\(self.pho!.name)"
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
         
-                mapItem.openInMapsWithLaunchOptions(launchOptions)
+        mapItem.name = "\(self.pho!.name)"
+        
+        
+        
+        dispatch_async(dispatch_get_main_queue(),{
+            
+            mapItem.openInMapsWithLaunchOptions(launchOptions)
+            
+        })
         
         
     }

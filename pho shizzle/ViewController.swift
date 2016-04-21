@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var tableView: UITableView!
     
     var manager:CLLocationManager!
-     var refreshControl = UIRefreshControl()
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +50,42 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: "refreshTable:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl) // not required when using UITableViewController
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         
+        checkNetworkAvailability()
+    }
+    
+    
+    func refreshTable(sender:AnyObject) {
+        // Code to refresh table view
+        
+
+        
+        // check connection before reloading data
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            GlobalVariables.phoInfoList.removeAll()
+            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.activityIndicator.startAnimating()
+            })
+            
+            manager.startUpdatingLocation()
+            
+            refreshControl.endRefreshing()
+        } else {
+            refreshControl.endRefreshing()
+            print("Internet connection FAILED")
+            var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
+        
+    }
+    
+    func checkNetworkAvailability(){
         //Check if connected to the internet
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
@@ -66,23 +97,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    func refreshTable(sender:AnyObject) {
-        // Code to refresh table view
-        
-        GlobalVariables.phoInfoList.removeAll()
-        
-        
-        self.tableView.reloadData()
-        
-        
-        activityIndicator.startAnimating()
-        
-        manager.startUpdatingLocation()
-        
-        refreshControl.endRefreshing()
-    }
-
-
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //        print(locations)
@@ -170,7 +184,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                             })
                         }
                         
-                        self.activityIndicator.stopAnimating()
+                        
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.activityIndicator.stopAnimating()
+                        })
                     })
                     
                     
@@ -194,7 +212,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         
-
+        
         
     }
     
@@ -238,7 +256,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.subtitle.textColor = UIColor.blackColor()
             cell.distance.textColor = UIColor.blackColor()
         }
-
+        
         return cell
     }
     
