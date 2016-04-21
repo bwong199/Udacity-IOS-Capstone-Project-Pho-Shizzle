@@ -124,6 +124,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                                     }
                                 }
                             }
+                        } else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let alertController = UIAlertController(title: nil, message:
+                                    "Failed to Download Data from Yelp", preferredStyle: UIAlertControllerStyle.Alert)
+                                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                                
+                                //                    self.presentViewController(alertController, animated: true, completion: nil)
+                            })
                         }
                         
                         self.activityIndicator.stopAnimating()

@@ -156,6 +156,14 @@ class DataFetch {
                     print("JSON Serialization failed")
                 }
                 
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let alertController = UIAlertController(title: nil, message:
+                        "Failed to Download Data from Zomato", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    //                    self.presentViewController(alertController, animated: true, completion: nil)
+                })
             }
             
         }
@@ -224,6 +232,14 @@ class DataFetch {
                     }
                     
                     
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        let alertController = UIAlertController(title: nil, message:
+                            "Failed to Download Data from Google Place", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        
+                        //                    self.presentViewController(alertController, animated: true, completion: nil)
+                    })
                 }
                 
             }
