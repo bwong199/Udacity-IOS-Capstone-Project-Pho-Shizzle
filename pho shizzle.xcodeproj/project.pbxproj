@@ -163,6 +163,11 @@
 					C51B5AAD1CBC981200C6F68E = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = B2W6ANM3HG;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

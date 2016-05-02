@@ -48,12 +48,10 @@ class FavPhoViewController: UIViewController, UITableViewDataSource, UITableView
             let results = try context.executeFetchRequest(request)
             
             if results.count > 0 {
-                print(results)
-                
-                
+//                print(results)
+     
                 for result in results as! [NSManagedObject] {
-             
-                
+
                             var newPho = Pho()
                             newPho.name = result.valueForKey("name") as! String
                             newPho.address = result.valueForKey("address") as! String
@@ -68,9 +66,7 @@ class FavPhoViewController: UIViewController, UITableViewDataSource, UITableView
                                 self.tableView.reloadData()
                                 
                             })
-                        
-                    
-                    
+
                 }
             }
         } catch {
@@ -101,6 +97,59 @@ class FavPhoViewController: UIViewController, UITableViewDataSource, UITableView
         cell.detailTextLabel!.text = "\(pho.address) - \(pho.phoneNumber)"
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle:   UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        print(list[indexPath.row].name);
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Restaurant")
+    
+        let firstPredicate = NSPredicate(format: "name = %@", list[indexPath.row].name)
+        
+        let secondPredicate = NSPredicate(format: "address = %@", list[indexPath.row].address)
+        
+        request.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [firstPredicate, secondPredicate])
+        
+        request.returnsObjectsAsFaults = false
+        
+        
+        do {
+            
+            let results = try context.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                
+                for result in results as! [NSManagedObject] {
+                    print(result)
+                    context.deleteObject(result);
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        
+                    }
+                    
+                    list.removeAtIndex(indexPath.row)
+                    
+                    dispatch_async(dispatch_get_main_queue(),{
+                        
+                        self.tableView.reloadData()
+                        
+                    })
+                    
+                }
+            }
+        } catch {
+        }
     }
     
     
